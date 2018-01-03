@@ -2,8 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User AbstractUser
 from django.contrib.auth.validators import ASCIIUsernameValidator
+
 # Create your models here.
 # snacks: name origin flavor cookingstep whereTobuy
 
@@ -22,8 +23,7 @@ class UserLikesSnack(models.Model):
     liks_number = models.IntegerField(default=0)
 
 
-class CustomUser(User):
-    username_validator = ASCIIUsernameValidator()
-
-    class Meta:
-        proxy = True  # If no new field is added.
+class User(AbstractUser):
+    bio = models.TextField(max_length=500, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
