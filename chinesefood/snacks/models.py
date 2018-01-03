@@ -19,6 +19,7 @@ class Snack(models.Model):
 
 class UserLikesSnack(models.Model):
     snack_name = models.CharField(max_length=200)
+    liks_number = models.IntegerField(default=0)
 
 
 class CustomUser(User):
